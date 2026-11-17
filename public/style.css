@@ -1,0 +1,392 @@
+@charset "UTF-8";
+
+/* 웹폰트 및 리셋 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #008080; /* 윈도우 95/98 기본 청록색 바탕화면 */
+  font-family: 'D2Coding', 'Consolas', 'Courier New', 'Malgun Gothic', 'Dotum', monospace;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 12px;
+  user-select: none;
+}
+
+/* 윈도우 98 윈도우 창 */
+.dataman-window {
+  width: 100%;
+  max-width: 1000px;
+  height: 92vh;
+  background-color: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 상단 타이틀바 */
+.window-titlebar {
+  background: linear-gradient(90deg, #000080, #1084d0);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 3px 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  letter-spacing: 0.5px;
+}
+
+.title-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.title-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: #ffcc00;
+  border: 1px solid #000;
+  border-radius: 2px;
+  text-align: center;
+  line-height: 14px;
+  font-size: 11px;
+  color: #000;
+  font-weight: 900;
+}
+
+.window-controls {
+  display: flex;
+  gap: 3px;
+}
+
+.win-btn {
+  width: 18px;
+  height: 16px;
+  background: #c0c0c0;
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
+}
+
+.win-btn:active {
+  border-top: 1px solid #000000;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+}
+
+/* 메뉴바 */
+.window-menubar {
+  background: #c0c0c0;
+  border-bottom: 1px solid #808080;
+  padding: 2px 6px;
+  display: flex;
+  gap: 14px;
+  font-size: 12px;
+  color: #000000;
+}
+
+.menu-item {
+  cursor: pointer;
+  padding: 1px 4px;
+}
+
+.menu-item:hover {
+  background-color: #000080;
+  color: #ffffff;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+/* 툴바 */
+.window-toolbar {
+  background: #c0c0c0;
+  border-bottom: 2px solid #808080;
+  padding: 3px 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tool-btn {
+  background: #c0c0c0;
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  padding: 2px 7px;
+  font-size: 11px;
+  color: #000000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tool-btn:active, .tool-btn.active {
+  border-top: 1px solid #000000;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  background: #d4d0c8;
+}
+
+.tool-separator {
+  width: 1px;
+  height: 18px;
+  background: #808080;
+  border-right: 1px solid #ffffff;
+  margin: 0 3px;
+}
+
+/* 메인 터미널 영역 */
+.terminal-container {
+  flex: 1;
+  position: relative;
+  background-color: #000080; /* 새롬데이타맨 고유의 진한 네이비 블루 */
+  margin: 3px;
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* CRT 모니터 스캔라인 효과 */
+.crt-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 10;
+  opacity: 0.6;
+}
+
+.crt-glow {
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+/* 터미널 텍스트 스크롤 영역 */
+.terminal-screen {
+  flex: 1;
+  padding: 10px 14px;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-all;
+  user-select: text;
+  color: #ffffff;
+}
+
+/* 레트로 고전 스크롤바 */
+.terminal-screen::-webkit-scrollbar {
+  width: 16px;
+  background: #c0c0c0;
+}
+
+.terminal-screen::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+}
+
+/* 텍스트 ANSI 레트로 컬러 팔레트 */
+.ansi-cyan { color: #00ffff; }
+.ansi-green { color: #00ff66; }
+.ansi-yellow { color: #ffff00; }
+.ansi-white { color: #ffffff; }
+.ansi-magenta { color: #ff77ff; }
+.ansi-red { color: #ff5555; }
+.ansi-dim { color: #aaaaaa; }
+.ansi-bold { font-weight: bold; }
+.ansi-highlight {
+  background-color: #00ffff;
+  color: #000080;
+  padding: 0 3px;
+  font-weight: bold;
+}
+
+/* 현재 문제 강조 배너 (터미널 내부) */
+.active-question-banner {
+  background-color: #000055;
+  border: 1px dashed #00ffff;
+  padding: 8px 12px;
+  margin: 8px 0;
+  color: #ffff00;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* 하단 입력 영역 */
+.terminal-input-bar {
+  background-color: #000080;
+  border-top: 1px solid #0000aa;
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  font-size: 14px;
+  position: relative;
+  z-index: 20;
+}
+
+.prompt-label {
+  color: #00ff66;
+  font-weight: bold;
+  white-space: nowrap;
+  margin-right: 6px;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: bold;
+  caret-color: #00ffff;
+}
+
+/* 커서 깜빡임 애니메이션 */
+.terminal-input::selection {
+  background-color: #00ffff;
+  color: #000080;
+}
+
+/* 하단 윈도우 98 상태 표시줄 (Status Bar) */
+.window-statusbar {
+  background: #c0c0c0;
+  border-top: 1px solid #ffffff;
+  padding: 3px 6px;
+  display: flex;
+  gap: 4px;
+  font-size: 11px;
+  color: #000000;
+}
+
+.status-cell {
+  background: #c0c0c0;
+  border-top: 1px solid #808080;
+  border-left: 1px solid #808080;
+  border-right: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+
+.status-online {
+  color: #008000;
+  font-weight: bold;
+}
+
+.status-cell.flex-fill {
+  flex: 1;
+}
+
+/* 모달 레이어 (닉네임 설정 등) */
+.modal-overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-dialog {
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  width: 380px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-body {
+  padding: 16px;
+  font-size: 12px;
+  color: #000;
+}
+
+.modal-body input {
+  width: 100%;
+  padding: 4px 6px;
+  margin: 10px 0 16px 0;
+  border-top: 1px solid #808080;
+  border-left: 1px solid #808080;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.dialog-btn {
+  padding: 3px 14px;
+  background: #c0c0c0;
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.dialog-btn:active {
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}

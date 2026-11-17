@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>새롬 데이타맨 프로 98 - [천리안 신의손 온라인 타자]</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 새롬데이타맨프로 메인 창 -->
+  <div class="dataman-window">
+    
+    <!-- 1. 윈도우 타이틀바 -->
+    <div class="window-titlebar">
+      <div class="title-text">
+        <span class="title-icon">D</span>
+        <span id="windowTitle">새롬 데이타맨 프로 98 Ver 3.0 - [천리안 01410]</span>
+      </div>
+      <div class="window-controls">
+        <button class="win-btn" title="최소화">_</button>
+        <button class="win-btn" title="최대화">□</button>
+        <button class="win-btn" title="닫기">×</button>
+      </div>
+    </div>
+
+    <!-- 2. 메뉴바 -->
+    <div class="window-menubar">
+      <span class="menu-item"><span class="underline">F</span>ile</span>
+      <span class="menu-item"><span class="underline">E</span>dit</span>
+      <span class="menu-item"><span class="underline">C</span>onnect</span>
+      <span class="menu-item"><span class="underline">D</span>ial</span>
+      <span class="menu-item"><span class="underline">R</span>ecord</span>
+      <span class="menu-item"><span class="underline">O</span>ptions</span>
+      <span class="menu-item"><span class="underline">H</span>elp</span>
+    </div>
+
+    <!-- 3. 툴바 -->
+    <div class="window-toolbar">
+      <button class="tool-btn" id="btnConnect" title="천리안 재접속">
+        <span>📞</span> 전화걸기
+      </button>
+      <button class="tool-btn" id="btnDisconnect" title="접속 해제">
+        <span>🔌</span> 전화끊기
+      </button>
+      <div class="tool-separator"></div>
+      <button class="tool-btn" id="btnSoundToggle" title="효과음 켜기/끄기">
+        <span id="soundIcon">🔊</span> <span id="soundLabel">소리 [ON]</span>
+      </button>
+      <button class="tool-btn" id="btnCrtToggle" title="CRT 모니터 스캔라인 효과 토글">
+        <span>📺</span> <span id="crtLabel">CRT [ON]</span>
+      </button>
+      <div class="tool-separator"></div>
+      <button class="tool-btn" id="btnChangeNick" title="내 닉네임 변경">
+        <span>👤</span> 닉네임변경
+      </button>
+      <button class="tool-btn" id="btnHelp" title="명령어 및 신의손 룰 도움말">
+        <span>❓</span> 도움말
+      </button>
+      <div class="tool-separator"></div>
+      <button class="tool-btn" id="btnStartGame" title="타자 대결 시작">
+        <span>⚡</span> /문제 (게임시작)
+      </button>
+      <button class="tool-btn" id="btnAddBot" title="테스트용 가상 참가자 3명 소환">
+        <span>🤖</span> /봇추가 3
+      </button>
+    </div>
+
+    <!-- 4. 메인 터미널 영역 -->
+    <div class="terminal-container">
+      <div class="crt-overlay" id="crtOverlay"></div>
+      
+      <!-- 터미널 스크린 출력부 -->
+      <div class="terminal-screen" id="terminalScreen">
+        <!-- 터미널 텍스트가 동적으로 렌더링됩니다 -->
+      </div>
+
+      <!-- 하단 입력 프롬프트 -->
+      <div class="terminal-input-bar">
+        <span class="prompt-label" id="promptLabel">천리안:대기실 &gt;</span>
+        <input type="text" id="terminalInput" class="terminal-input" autocomplete="off" spellcheck="false" placeholder="명령어나 대화를 입력하고 Enter를 누르세요 (/도움말)">
+      </div>
+    </div>
+
+    <!-- 5. 윈도우 98 상태 표시줄 (Status Bar) -->
+    <div class="window-statusbar">
+      <div class="status-cell status-online" id="statusConnect">● 온라인</div>
+      <div class="status-cell" id="statusTimer">통신시간: 00:00:00</div>
+      <div class="status-cell">33,600 bps V.34</div>
+      <div class="status-cell flex-fill" id="statusLocation">위치: 천리안 로비 (대기실)</div>
+      <div class="status-cell" id="statusUsers">접속자: 1명</div>
+      <div class="status-cell" id="statusUserLevel">흙손 (Lv.1)</div>
+      <div class="status-cell">한/영: [한]</div>
+      <div class="status-cell">VT-100</div>
+    </div>
+
+  </div>
+
+  <!-- 닉네임 설정 모달 다이얼로그 -->
+  <div class="modal-overlay" id="nickModal">
+    <div class="modal-dialog">
+      <div class="window-titlebar">
+        <span>사용자 닉네임 설정</span>
+        <button class="win-btn" id="btnCloseModal">×</button>
+      </div>
+      <div class="modal-body">
+        <p>천리안 '신의손' 타자 대결에서 사용할 닉네임을 입력하세요:</p>
+        <input type="text" id="nickInput" maxlength="10" placeholder="예: 타자고수, 번개손">
+        <div class="modal-footer">
+          <button class="dialog-btn" id="btnSaveNick">확인</button>
+          <button class="dialog-btn" id="btnCancelNick">취소</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 스크립트 로드 -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="sound.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
